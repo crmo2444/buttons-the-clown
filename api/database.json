@@ -9,6 +9,50 @@
       "name": "Lollipop"
     }
   ],
-  "completions": [],
-  "requests": []
+  "completions": [
+    {
+      "reservationId": 1,
+      "clownId": 2,
+      "date_created": 1652283151313,
+      "id": 1
+    },
+    {
+      "reservationId": 1,
+      "clownId": 2,
+      "date_created": 1652283169448,
+      "id": 2
+    },
+    {
+      "reservationId": 1,
+      "clownId": 1,
+      "date_created": 1652283299773,
+      "id": 3
+    },
+    {
+      "reservationId": 2,
+      "clownId": 1,
+      "date_created": 1652283426266,
+      "id": 4
+    }
+  ],
+  "requests": [
+    {
+      "parentName": "test",
+      "childName": "test",
+      "attendees": "10",
+      "address": "test",
+      "date": "2022-10-10",
+      "hours": "5",
+      "id": 1
+    },
+    {
+      "parentName": "test2",
+      "childName": "test2",
+      "attendees": "5",
+      "address": "test2",
+      "date": "2022-10-09",
+      "hours": "4",
+      "id": 2
+    }
+  ]
 }
