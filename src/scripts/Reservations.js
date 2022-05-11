@@ -10,6 +10,10 @@ export const Reservations = () => {
     let completions = getCompletions()
 
     let html = "<ul>"
+    
+    reservations.sort((a, b) => {
+        return Math.abs(Date.now() - new Date(a.date)) - Math.abs(Date.now() - new Date(b.date))
+    })
 
     let reservationList = reservations.map(reservation => { 
         const foundCompletion = completions.find((completion) => {
