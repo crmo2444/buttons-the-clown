@@ -14,11 +14,21 @@ export const fetchRequests = () => {
 }
 
 const applicationState = {
-    requests: []
+    requests: [],
+    clowns: [],
+    completions: []
 }
 
 export const getRequests = () => {
     return applicationState.requests.map(requests => ({...requests}))
+}
+
+export const getClowns = () => {
+    return applicationState.clowns.map(clowns => ({...clowns}))
+}
+
+export const getCompletions = () => {
+    return applicationState.completions.map(completions => ({...completions}))
 }
 
 export const sendRequest = (userServiceRequest) => {
@@ -46,4 +56,42 @@ export const deleteReservation = (id) => {
                 mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
             }
         )
+}
+
+export const fetchClowns = () => {
+    return fetch(`${API}/clowns`)
+        .then(response => response.json())
+        .then(
+            (data) => {
+                applicationState.clowns = data
+            }
+        )
+}
+
+export const saveCompletion = (completion) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(completion)
+    }
+
+
+    return fetch(`${API}/completions`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            })
+}
+
+export const fetchCompletions = () => {
+    return fetch(`${API}/completions`)
+    .then(response => response.json())
+    .then(
+        (serviceCompletions) => {
+        
+            applicationState.completions = serviceCompletions
+        }
+    )
 }

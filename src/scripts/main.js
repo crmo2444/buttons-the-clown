@@ -1,5 +1,5 @@
 import { ButtonsTheClown } from "./ButtonsTheClown.js"
-import { fetchRequests } from "./dataAccess.js"
+import { fetchClowns, fetchCompletions, fetchRequests } from "./dataAccess.js"
 import { ServiceForm } from "./ServiceForm.js"
 
 const mainContainer = document.querySelector(".container")
@@ -12,9 +12,11 @@ mainContainer.addEventListener(
 )
 
 const render = () => {
-    fetchRequests().then(() =>
+    fetchRequests().then(() => fetchClowns())
+    .then(() => fetchCompletions()).then(
+        () => {
     mainContainer.innerHTML = ButtonsTheClown()
-
+        }
     )
     
 
